@@ -6,6 +6,7 @@ installiert haben.
 
 Bevor Sie das Script ausführen müssen in der .env in folgenden Sections die Parameter ausfüllen: 
 
+```bash
 # [Database]
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -35,14 +36,16 @@ STAND_ALONE=true
 APP_ENV=production
 APP_DEBUG=false
 LOG_CHANNEL=daily
-
+```
 
 ******************
 
 Außerdem müssen Sie in der install.php folgende Variablen rictig setzen:
 
+```bash
 private $wwwRoot = "";
 private $resetWeeklyCron = false;
 private $resetMonthlyCron = false;
 private $resetYearlyCron = false;
+```
 

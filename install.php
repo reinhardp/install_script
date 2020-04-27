@@ -37,7 +37,6 @@ class Install {
             $this->generteKey($icrootPath);
             $this->migrate($icrootPath);
 
-            $this->createcronJob();
             return true;
         } else {
             echo "Windows not yet supported!\n";
@@ -50,43 +49,37 @@ class Install {
     private function extract() {
          
         $retCode = exec("unzip $zipFile", $retArr, $retVal);
+        echo "extract: $retCode\n";
         
     }
 
     private function renameDir() {
         $retCode = rename('iventorycontrol-master', 'iventorycontrol');
+        echo "renameDir: $retCode\n";
     }
     
     private function copyDir() {
         
         $retCode = copy('iventorycontrol', $this->wwwRoot);
+        echo "copyDir: $retCode\n";
     }
     
     private function copyEnvFile() {
         $retCode = copy('.env', $this->wwwRoot . '/inventorycontrol/.env');
+        echo "copyEnvFile: $retCode\n";
     }
     
-    private function createcronJob() {
-        
-        if($this->resetWeeklyCron == true) {
-            
-        }
-        if($this->resetMonthlyCron == true) {
-            
-        }
-        if($this->resetYearlyCron == true) {
-            
-        }
-    }
     
     private function generteKey($icrootpath) {
         $command = "php " . $icrootpath . "/artisan key:generate";
         $retCode = exec($command, $retArr, $retVal);        
+        echo "generteKey: $retCode\n";
     }
 
     private function migrate($icrootpath) {
         $command = "php " . $icrootpath . "/artisan migrate";
         $retCode = exec($command, $retArr, $retVal);        
+        echo "migrate: $retCode\n";
         
     }
 }

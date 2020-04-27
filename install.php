@@ -21,9 +21,13 @@ class Install {
     }
     
     public function install() {
-        
+        if($this->wwwRoot == "") {
+            echo "No docment root given!\n\n";
+            return false;
+            
+        }
         if(!file_exists($this->zipFile))   {
-            echo "File $this->zipFile do not exist in the current directory!\n";
+            echo "File $this->zipFile do not exist in the current directory!\n\n";
             return false;
         }
             

@@ -6,9 +6,6 @@ class Install {
 
     /*** change to your need ***/
     private $wwwRoot = "";
-    private $resetWeeklyCron = false;
-    private $resetMonthlyCron = false;
-    private $resetYearlyCron = false;
     /******/
 
     private $env = '.env';
@@ -27,7 +24,7 @@ class Install {
     public function install() {
         
         if($this->isWin == false) {
-            $icrootPath = $wwwRoot . '/inventorycontrol/';
+            $icrootPath = $this->wwwRoot . '/inventorycontrol/';
 
             $this->extract();
             $this->renameDir();
@@ -36,7 +33,7 @@ class Install {
 
             $this->generteKey($icrootPath);
             $this->migrate($icrootPath);
-
+            $this->message();
             return true;
         } else {
             echo "Windows not yet supported!\n";
@@ -82,6 +79,15 @@ class Install {
         echo "migrate: $retCode\n";
         
     }
+    
+    private function message() {
+        echo "Add the con job for couter reset\n";
+        echo "The command have to be called from $this->wwwRoot/inventorycontrol/ directory"; 
+        echo "weekly: php artisan weeklyreset:cron\n";
+        echo "monthly: php artisan monthlyreset:cron\n";
+        echo "yearly: php artisan yearlyreset:cron\n";
+        
+    }
 }
 
 
@@ -89,3 +95,5 @@ class Install {
 $install = new Install;
 
 $install->install();
+
+

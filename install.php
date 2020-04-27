@@ -12,7 +12,6 @@ class Install {
     private $zipFile = 'iventorycontrol-master.zip';
     private $isWin = false;
     private $update = false;
-    private $zipFile = "";
 
     public function __construct() {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
@@ -22,6 +21,12 @@ class Install {
     }
     
     public function install() {
+        
+        if(!file_exists($this->zipFile))   {
+            echo "File $this->zipFile do not exist in the current directory!\n";
+            return false;
+        }
+            
         
         if($this->isWin == false) {
             $icrootPath = $this->wwwRoot . '/inventorycontrol/';

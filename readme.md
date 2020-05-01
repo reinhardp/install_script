@@ -41,15 +41,8 @@ LOG_CHANNEL=daily
 ```
 
 ******************
-
-Außerdem müssen Sie in der install.php folgende Variablen rictig setzen:
-
-```bash
-private $wwwRoot = "";
-private $resetWeeklyCron = false;
-private $resetMonthlyCron = false;
-private $resetYearlyCron = false;
-```
+WICHTIG!!
+Sie müssen in Apache mod rewrite aktivieren!
 
 
 English version:
@@ -63,7 +56,7 @@ You also need to create a database in MySQL. You then enter this in DB_DATABASE 
 
 Before you run the script, fill in the parameters in the .env in the following sections:
 
-`` bash
+```bash
 # [Database]
 DB_CONNECTION = mysql
 DB_HOST = 127.0.0.1
@@ -93,14 +86,8 @@ STAND_ALONE = true
 APP_ENV = production
 APP_DEBUG = false
 LOG_CHANNEL = daily
-''
+```
 
 ******************
-
-In addition, you must set the following variables properly in install.php:
-
-`` bash
-private $ wwwRoot = "";
-private $ resetWeeklyCron = false;
-private $ resetMonthlyCron = false;
-private $ resetYearlyCron = false;
+IMPORTANT!!
+You need to enable mod rewrite in Apache!

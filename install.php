@@ -42,6 +42,10 @@ class Install {
 
             $this->generteKey($icrootPath);
             $this->migrate($icrootPath);
+            
+            $this->changeOwner($icrootPath);
+            $this->storageLink($icrootPath);
+            
             $this->message();
             return true;
         } else {
@@ -90,6 +94,23 @@ class Install {
         $retCode = exec($command, $retArr, $retVal);        
         echo "migrate: $retCode\n\n";
         
+    }
+    
+    private function storageLink($icrootPath) {
+        $command = "php " . $icrootPath . "artisan storage:link";
+        $retCode = exec($command, $retArr, $retVal);        
+        echo "storageLink: $retCode\n\n";
+    }
+    
+    private function changeOwner($icrootPath) {
+        
+        $command = "chmod -R 755 $icrootPath";
+        $retCode = exec($command, $retArr, $retVal);        
+        echo "changeMod: $retCode\n\n";
+
+        $command = "chown -R www-data:www-data $icrootPath";
+        $retCode = exec($command, $retArr, $retVal);        
+        echo "changeOwner: $retCode\n\n";
     }
     
     private function message() {

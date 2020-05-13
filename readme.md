@@ -79,6 +79,8 @@ MAIL_FROM_NAME = ""
 # [InventoryControl]
 # change it to your needs
 APP_URL = https: //example.com
+LISTEN_DIRECTORY=path/to/resource
+
 
 # Do not change this!
 APP_KEY =
